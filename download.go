@@ -4,6 +4,7 @@ import (
 	"os"
 	"net/http"
 	"io"
+	"strconv"
 )
 
 func main() {
@@ -18,9 +19,9 @@ func main() {
 func downloadFile() error {
 	for i:=1; i<=24; i++ {
 		println (string(i))
-		url := "http://math.slu.edu/~freeman/Discrete_Lecture_"+ string(i) +".pdf"
+		url := "http://math.slu.edu/~freeman/Discrete_Lecture_"+ strconv.Itoa(i) +".pdf"
 		// Create the file
-		out, err := os.Create(url)
+		out, err := os.Create(strconv.Itoa(i) +".pdf")
 		if err != nil {
 			return err
 		}
