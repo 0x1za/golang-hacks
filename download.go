@@ -8,9 +8,7 @@ import (
 )
 
 func main() {
-
 	err := downloadFile()
-
 	if err != nil {
 		panic(err)
 	}
