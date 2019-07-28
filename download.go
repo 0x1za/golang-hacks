@@ -19,12 +19,10 @@ func main() {
 func downloadFile() error {
 	for i:=1; i<=24; i++ {
 		println (string(i))
-		url := "http://math.slu.edu/~freeman/Discrete_Lecture_"+ strconv.Itoa(i) +".pdf"
+		url := "https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture"+ strconv.Itoa(i) +".pdf"
 		// Create the file
-		out, err := os.Create(strconv.Itoa(i) +".pdf")
-		if err != nil {
-			return err
-		}
+		out, err := os.Create("lecture"+strconv.Itoa(i) +".pdf")
+
 		defer out.Close()
 
 		// Get the data
