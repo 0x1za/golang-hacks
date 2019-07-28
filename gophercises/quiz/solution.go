@@ -4,30 +4,20 @@ import (
 	"fmt"
 	"os"
 	"encoding/csv"
-	"io"
 )
 
 func main()  {
-	readCSV("gophercises/quiz/problems.csv")
+	quiz("gophercises/quiz/problems.csv")
 }
 
-// Function to read CSV from DIR.
-func readCSV(file_path string){
+func quiz(file_path string){
 	// Load the csv file from path
 	f, _ := os.Open(file_path)
 
 	// Create new reader.
 	r := csv.NewReader(f)
-
-	for {
-		record, err := r.Read()
-		// Stop at EOF
-		if err == io.EOF {
-			break
-		} else if err != nil{
-			panic(err)
-		}
-
-		fmt.Println(record[0], record[1])
+	result, _ := r.ReadAll()
+	for i := range result{
+		fmt.Println(result[i][0], result[i][1])
 	}
 }
